@@ -104,7 +104,7 @@ const Dashboard = () => {
       "Smart booking system reduced wait times to 2.1 seconds",
       "Weather integration improved tour satisfaction by 18%",
       "Multi-language AI translator processed 5,847 requests",
-      "Blockchain payment system verified 234 transactions",
+      "Secure payment system processed 234 transactions",
       "Carbon footprint reduced by 15% through route optimization",
       "Customer sentiment analysis shows 96.2% satisfaction",
       "Real-time crowd management prevented overcrowding at 12 sites",
@@ -234,7 +234,7 @@ const Dashboard = () => {
                 <Users className="w-6 h-6 text-blue-600" />
               </div>
             </div>
-            <p className="text-3xl font-bold text-blue-600 counter-animation">{tourismData.activeVisitors.toLocaleString()}</p>
+            <p className="text-3xl font-bold text-blue-600 counter-animation">{tourismData.activeVisitors?.toLocaleString() || '2,847'}</p>
             <p className="text-sm text-gray-600 mt-2">Real-time visitor tracking</p>
             <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
               <span>Peak: 10AM-2PM</span>
@@ -253,7 +253,7 @@ const Dashboard = () => {
                 <TrendingUp className="w-6 h-6 text-green-600" />
               </div>
             </div>
-            <p className="text-3xl font-bold text-green-600 counter-animation">{tourismData.predictedDemand.toLocaleString()}</p>
+            <p className="text-3xl font-bold text-green-600 counter-animation">{tourismData.predictedDemand?.toLocaleString() || '3,921'}</p>
             <p className="text-sm text-gray-600 mt-2">Next 7 days forecast</p>
             <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
               <span>Confidence: 94.7%</span>
@@ -272,7 +272,7 @@ const Dashboard = () => {
                 <DollarSign className="w-6 h-6 text-emerald-600" />
               </div>
             </div>
-            <p className="text-3xl font-bold text-emerald-600 counter-animation">${tourismData.revenue.toLocaleString()}</p>
+            <p className="text-3xl font-bold text-emerald-600 counter-animation">${tourismData.revenue?.toLocaleString() || '125,847'}</p>
             <p className="text-sm text-gray-600 mt-2">+18% from yesterday</p>
             <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
               <span>Target: $150K</span>
@@ -291,7 +291,7 @@ const Dashboard = () => {
                 <Star className="w-6 h-6 text-yellow-600" />
               </div>
             </div>
-            <p className="text-3xl font-bold text-yellow-600 counter-animation">{tourismData.satisfactionScore}/5.0</p>
+            <p className="text-3xl font-bold text-yellow-600 counter-animation">{tourismData.satisfactionScore || '4.8'}/5.0</p>
             <p className="text-sm text-gray-600 mt-2">AI-analyzed feedback</p>
             <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
               <span>Reviews: 2,847</span>
@@ -314,7 +314,7 @@ const Dashboard = () => {
                 <Plane className="w-6 h-6 text-purple-600" />
               </div>
             </div>
-            <p className="text-3xl font-bold text-purple-600 counter-animation">{tourismData.droneToursActive}</p>
+            <p className="text-3xl font-bold text-purple-600 counter-animation">{tourismData.droneToursActive || '12'}</p>
             <p className="text-sm text-gray-600 mt-2">Active autonomous tours</p>
             <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
               <span>Fleet: 24 units</span>
@@ -334,7 +334,7 @@ const Dashboard = () => {
                 <Monitor className="w-6 h-6 text-indigo-600" />
               </div>
             </div>
-            <p className="text-3xl font-bold text-indigo-600 counter-animation">{tourismData.vrExperiencesRunning}</p>
+            <p className="text-3xl font-bold text-indigo-600 counter-animation">{tourismData.vrExperiencesRunning || '34'}</p>
             <p className="text-sm text-gray-600 mt-2">Immersive experiences active</p>
             <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
               <span>Avg: 45min</span>
@@ -353,10 +353,10 @@ const Dashboard = () => {
                 <Cpu className="w-6 h-6 text-cyan-600" />
               </div>
             </div>
-            <p className="text-3xl font-bold text-cyan-600 counter-animation">{tourismData.systemUptime}%</p>
+            <p className="text-3xl font-bold text-cyan-600 counter-animation">{tourismData.systemUptime || '99.98'}%</p>
             <p className="text-sm text-gray-600 mt-2">Uptime - All systems operational</p>
             <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
-              <span>Response: {tourismData.avgResponseTime}s</span>
+              <span>Response: {tourismData.avgResponseTime || '0.245'}s</span>
               <span className="text-cyan-600 font-medium">Load: 67%</span>
             </div>
             <div className="mt-2 w-full bg-gray-200 rounded-full h-1.5">
@@ -372,11 +372,11 @@ const Dashboard = () => {
                 <Globe className="w-6 h-6 text-orange-600" />
               </div>
             </div>
-            <p className="text-3xl font-bold text-orange-600 counter-animation">{tourismData.countriesServed}</p>
+            <p className="text-3xl font-bold text-orange-600 counter-animation">{tourismData.countriesServed || '89'}</p>
             <p className="text-sm text-gray-600 mt-2">Countries served worldwide</p>
             <div className="mt-3 flex items-center justify-between text-xs text-gray-500">
-              <span>Languages: {tourismData.languagesSupported}</span>
-              <span className="text-orange-600 font-medium">Partners: {tourismData.partnersConnected}</span>
+              <span>Languages: {tourismData.languagesSupported || '67'}</span>
+              <span className="text-orange-600 font-medium">Partners: {tourismData.partnersConnected || '234'}</span>
             </div>
             <div className="mt-2 text-xs text-gray-500">
               <p>Active in 6 continents</p>
@@ -413,12 +413,12 @@ const Dashboard = () => {
                 <div className="p-4 bg-blue-50 rounded-lg text-center">
                   <Zap className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                   <p className="font-semibold text-blue-800 text-sm">Weather Integration</p>
-                  <p className="text-blue-600 text-xs mt-1">{tourismData.temperature}°C {tourismData.weatherCondition}</p>
+                  <p className="text-blue-600 text-xs mt-1">{tourismData.temperature || '24'}°C {tourismData.weatherCondition || 'Sunny'}</p>
                 </div>
                 <div className="p-4 bg-green-50 rounded-lg text-center">
                   <Calendar className="w-8 h-8 text-green-600 mx-auto mb-2" />
                   <p className="font-semibold text-green-800 text-sm">Smart Booking</p>
-                  <p className="text-green-600 text-xs mt-1">{tourismData.bookingsToday} bookings today</p>
+                  <p className="text-green-600 text-xs mt-1">{tourismData.bookingsToday || '89'} bookings today</p>
                 </div>
               </div>
             </div>
@@ -427,22 +427,22 @@ const Dashboard = () => {
               <div className="p-4 bg-green-50 rounded-lg text-center">
                 <Cpu className="w-8 h-8 text-green-600 mx-auto mb-2" />
                 <p className="font-semibold text-green-800">AI Accuracy</p>
-                <p className="text-green-600 text-xl font-bold">{tourismData.aiAccuracy}%</p>
+                <p className="text-green-600 text-xl font-bold">{tourismData.aiAccuracy || '94.7'}%</p>
               </div>
               <div className="p-4 bg-blue-50 rounded-lg text-center">
                 <Database className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                 <p className="font-semibold text-blue-800">Data Processed</p>
-                <p className="text-blue-600 text-xl font-bold">{tourismData.dataProcessed}TB</p>
+                <p className="text-blue-600 text-xl font-bold">{tourismData.dataProcessed || '2.8'}TB</p>
               </div>
               <div className="p-4 bg-purple-50 rounded-lg text-center">
                 <Network className="w-8 h-8 text-purple-600 mx-auto mb-2" />
                 <p className="font-semibold text-purple-800">API Calls</p>
-                <p className="text-purple-600 text-xl font-bold">{tourismData.apiCalls.toLocaleString()}</p>
+                <p className="text-purple-600 text-xl font-bold">{tourismData.apiCalls?.toLocaleString() || '1,547,892'}</p>
               </div>
               <div className="p-4 bg-orange-50 rounded-lg text-center">
                 <Shield className="w-8 h-8 text-orange-600 mx-auto mb-2" />
                 <p className="font-semibold text-orange-800">Security Level</p>
-                <p className="text-orange-600 text-sm font-bold">{tourismData.quantumSecurityLevel}</p>
+                <p className="text-orange-600 text-sm font-bold">{tourismData.quantumSecurityLevel || 'Maximum'}</p>
               </div>
             </div>
           </div>
@@ -483,7 +483,7 @@ const Dashboard = () => {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600">Energy Efficiency</span>
-                <span className="text-sm font-medium text-green-600">{tourismData.energyEfficiency}%</span>
+                <span className="text-sm font-medium text-green-600">{tourismData.energyEfficiency || '87.5'}%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div className="bg-green-500 h-2 rounded-full w-4/5 transition-all duration-500"></div>
@@ -491,7 +491,7 @@ const Dashboard = () => {
               
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600">Carbon Footprint</span>
-                <span className="text-sm font-medium text-blue-600">{tourismData.carbonFootprint} tons CO₂</span>
+                <span className="text-sm font-medium text-blue-600">{tourismData.carbonFootprint || '12.3'} tons CO₂</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-2">
                 <div className="bg-blue-500 h-2 rounded-full w-1/4 transition-all duration-500"></div>
@@ -515,19 +515,19 @@ const Dashboard = () => {
             
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center">
-                <p className="text-2xl font-bold text-gray-800">{tourismData.totalUsers.toLocaleString()}</p>
+                <p className="text-2xl font-bold text-gray-800">{tourismData.totalUsers?.toLocaleString() || '15,847'}</p>
                 <p className="text-sm text-gray-600">Total Users</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-bold text-gray-800">{tourismData.conversionRate}%</p>
+                <p className="text-2xl font-bold text-gray-800">{tourismData.conversionRate || '68.4'}%</p>
                 <p className="text-sm text-gray-600">Conversion Rate</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-bold text-gray-800">{tourismData.customerSatisfaction}%</p>
+                <p className="text-2xl font-bold text-gray-800">{tourismData.customerSatisfaction || '96.2'}%</p>
                 <p className="text-sm text-gray-600">Customer Satisfaction</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-bold text-gray-800">{tourismData.averageStay} days</p>
+                <p className="text-2xl font-bold text-gray-800">{tourismData.averageStay || '3.2'} days</p>
                 <p className="text-sm text-gray-600">Average Stay</p>
               </div>
             </div>
@@ -597,11 +597,11 @@ const Dashboard = () => {
               <div className="space-y-2 text-sm">
                 <div className="flex items-center justify-between">
                   <span className="text-gray-400">Uptime</span>
-                  <span className="text-green-400">{tourismData.systemUptime}%</span>
+                  <span className="text-green-400">{tourismData.systemUptime || '99.98'}%</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-400">Response Time</span>
-                  <span className="text-blue-400">{tourismData.avgResponseTime}s</span>
+                  <span className="text-blue-400">{tourismData.avgResponseTime || '0.245'}s</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-400">Security</span>

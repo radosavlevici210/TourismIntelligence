@@ -488,7 +488,7 @@ const FeatureModules = ({ selectedFeature, onBack }: FeatureModulesProps) => {
                   <p>• Zero-trust architecture active</p>
                   <p>• Quantum encryption enabled</p>
                   <p>• AI threat detection operational</p>
-                  <p>• Blockchain authentication verified</p>
+                  <p>• Secure authentication verified</p>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -528,9 +528,9 @@ const FeatureModules = ({ selectedFeature, onBack }: FeatureModulesProps) => {
               <div className="p-4 border rounded-lg">
                 <div className="flex items-center gap-3 mb-2">
                   <Network className="w-6 h-6 text-green-600" />
-                  <h4 className="font-semibold">Blockchain Authentication</h4>
+                  <h4 className="font-semibold">Secure Authentication</h4>
                 </div>
-                <p className="text-sm text-gray-600">Decentralized verification for secure access</p>
+                <p className="text-sm text-gray-600">Multi-factor authentication for secure access</p>
               </div>
             </div>
           </CardContent>
