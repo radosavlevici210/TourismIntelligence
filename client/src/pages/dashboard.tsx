@@ -10,7 +10,7 @@ import {
 const Dashboard = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [selectedFeature, setSelectedFeature] = useState('dashboard');
-  const [aiInsights, setAiInsights] = useState([]);
+  const [aiInsights, setAiInsights] = useState<string[]>([]);
   const [tourismData, setTourismData] = useState({
     activeVisitors: 2847,
     predictedDemand: 3921,
@@ -40,7 +40,13 @@ const Dashboard = () => {
     apiCalls: 1547892
   });
 
-  const [activityFeed, setActivityFeed] = useState([
+  const [activityFeed, setActivityFeed] = useState<Array<{
+    id: number;
+    type: string;
+    message: string;
+    time: string;
+    color: string;
+  }>>([
     {
       id: 1,
       type: 'booking',
@@ -97,7 +103,8 @@ const Dashboard = () => {
     ];
 
     const insightsTimer = setInterval(() => {
-      setAiInsights([insights[Math.floor(Math.random() * insights.length)]]);
+      const randomInsight = insights[Math.floor(Math.random() * insights.length)];
+      setAiInsights([randomInsight]);
     }, 4000);
 
     // Simulate real-time data updates
