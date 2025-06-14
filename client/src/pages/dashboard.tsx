@@ -194,7 +194,7 @@ const Dashboard = () => {
           <div className="flex items-center justify-between text-xs">
             <div className="flex items-center space-x-2">
               <Copyright className="w-4 h-4 text-blue-600" />
-              <span className="text-blue-800 font-medium">© 2025 radosavlevici210 - Open Source MIT License</span>
+              <span className="text-blue-800 font-medium">© 2025 Ervin Remus Radosavlevici - All Rights Reserved</span>
             </div>
             <div className="flex items-center space-x-2">
               <ShieldCheck className="w-4 h-4 text-purple-600" />
