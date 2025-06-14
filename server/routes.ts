@@ -1,13 +1,16 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import simpleTourismRoutes from "./simple-tourism-routes";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // put application routes here
-  // prefix all routes with /api
+  // Tourism platform routes
+  app.use(simpleTourismRoutes);
 
-  // use storage to perform CRUD operations on the storage interface
-  // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
+  // User authentication routes (if needed)
+  app.get("/api/user", (req, res) => {
+    res.json({ message: "User endpoint available" });
+  });
 
   const httpServer = createServer(app);
 

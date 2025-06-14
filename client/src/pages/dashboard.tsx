@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { 
   MapPin, Calendar, Users, Star, TrendingUp, Plane, Monitor, Brain, Shield, Globe, 
   Clock, Copyright, Zap, BarChart3, Camera, Wifi, Navigation, Settings, DollarSign, 
@@ -6,12 +7,20 @@ import {
   FileText, MessageSquare, Video, Music, Book, Coffee, ShoppingBag, Car, Train, 
   Ship, Activity, Leaf, ShieldCheck
 } from 'lucide-react';
+import FeatureModules from './feature-modules';
 
 const Dashboard = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [selectedFeature, setSelectedFeature] = useState('dashboard');
   const [aiInsights, setAiInsights] = useState<string[]>([]);
-  const [tourismData, setTourismData] = useState({
+  
+  // Fetch real-time dashboard data
+  const { data: dashboardData, refetch } = useQuery({
+    queryKey: ['/api/dashboard/analytics'],
+    refetchInterval: 5000
+  });
+  
+  const tourismData = dashboardData || {
     activeVisitors: 2847,
     predictedDemand: 3921,
     droneToursActive: 12,
@@ -38,7 +47,7 @@ const Dashboard = () => {
     countriesServed: 89,
     partnersConnected: 234,
     apiCalls: 1547892
-  });
+  };
 
   const [activityFeed, setActivityFeed] = useState<Array<{
     id: number;
@@ -107,15 +116,10 @@ const Dashboard = () => {
       setAiInsights([randomInsight]);
     }, 4000);
 
-    // Simulate real-time data updates
+    // Refresh dashboard data periodically
     const dataTimer = setInterval(() => {
-      setTourismData(prev => ({
-        ...prev,
-        activeVisitors: prev.activeVisitors + Math.floor(Math.random() * 10 - 5),
-        revenue: prev.revenue + Math.floor(Math.random() * 1000),
-        apiCalls: prev.apiCalls + Math.floor(Math.random() * 100)
-      }));
-    }, 6000);
+      refetch();
+    }, 10000);
 
     // Activity feed updates
     const activityTimer = setInterval(() => {
@@ -164,6 +168,11 @@ const Dashboard = () => {
   const selectFeature = (featureId: string) => {
     setSelectedFeature(featureId);
   };
+
+  // Show feature module if one is selected
+  if (selectedFeature !== 'dashboard') {
+    return <FeatureModules selectedFeature={selectedFeature} onBack={() => setSelectedFeature('dashboard')} />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
